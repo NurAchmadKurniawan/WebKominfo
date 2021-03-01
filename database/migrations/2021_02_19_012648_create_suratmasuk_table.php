@@ -18,7 +18,7 @@ class CreateSuratmasukTable extends Migration
             $table->string('AlamatPengirim');
             $table->string('NomorSurat');
             $table->string('Perihal');
-            $table->string('Foto');
+            $table->string('Foto')->nullable();
             $table->timestamps();
         });
     }

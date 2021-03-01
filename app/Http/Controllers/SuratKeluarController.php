@@ -10,11 +10,13 @@ use File;
 class SuratKeluarController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        // pagination
-        $keluar=SuratKeluar::paginate(10);
-
+        $keluar = DB::table('SuratKeluar');
+        if ($request->has('from') && $request->has('to') && $request->from !== $request->to) {
+            $keluar->whereBetween('created_at', [$request->from, $request->to]);
+        }
+        $keluar = $keluar->paginate(5);
         return view('admin/suratkeluar', compact('keluar'));
     }
 

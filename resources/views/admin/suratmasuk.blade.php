@@ -53,7 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container">
         <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="form-group row" method="POST" action="{{route('date')}}"  enctype="multipart/form-data">
+            <form class="form-group row" action="" method="GET">
               <label for="date" class="col-form-labe col-sm-2">Tanggal Awal</label>
               <div class="col-sm-3">
                 <input type="date" class="form-control input-sm" id="from" name="from" required>
@@ -63,9 +63,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <input type="date" class="form-control input-sm" id="to" name="to" required>
               </div>
               <div class="col-sm-2">
-                <button type="submit" class="btn" name="search" title="Search"><img src="https://img.icons8.com/ios-glyphs/30/000000/search.png"/></button>
+                <button type="submit" role="submit" class="btn" name="search" title="Search"><img src="https://img.icons8.com/ios-glyphs/30/000000/search.png"/></button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

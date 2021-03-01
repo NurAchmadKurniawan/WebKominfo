@@ -14,11 +14,13 @@ class SuratMasukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
-        // $masuk=SuratMasuk::paginate(1);
-        $masuk=DB::table('SuratMasuk')  ->paginate(2);
+        $masuk = DB::table('SuratMasuk');
+        if ($request->has('from') && $request->has('to') && $request->from !== $request->to) {
+            $masuk->whereBetween('created_at', [$request->from, $request->to]);
+        }
+        $masuk = $masuk->paginate(3);
         return view('admin/suratmasuk', compact('masuk'));
     }
     public function cari(Request $request)

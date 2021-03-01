@@ -76,7 +76,7 @@
                 <th scope="row">{{$usr->id}}</th>
                 <td>{{$usr->name}}</td>
                 <td>{{$usr->email}}</td>
-                <td>{{$usr->password_biasa}}</td> 
+                <td>{{$usr->password}}</td> 
                 <td>
                   <a href="{{route('useredit',[$usr->id])}}">
                       <img src="https://img.icons8.com/fluent-systems-filled/24/000000/edit-property.png">

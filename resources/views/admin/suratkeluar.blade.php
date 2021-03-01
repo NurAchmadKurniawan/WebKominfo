@@ -50,20 +50,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Search date to date -->
     <div class="container">
       <div class="row">
-       <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="form-group row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+          <form class="form-group row" action="" method="GET">
             <label for="date" class="col-form-labe col-sm-2">Tanggal Awal</label>
             <div class="col-sm-3">
-              <input type="date" class="form-control input-sm" id="form" name="form" required>
+              <input type="date" class="form-control input-sm" id="from" name="from" required>
             </div>
             <label for="date" class="col-form-labe col-sm-2">Tanggal Akhir</label>
             <div class="col-sm-3">
               <input type="date" class="form-control input-sm" id="to" name="to" required>
             </div>
             <div class="col-sm-2">
-              <button type="submit" class="btn" name="search" title="Search caari"><img src="https://img.icons8.com/ios-glyphs/30/000000/search.png"/></button>
+              <button type="submit" role="submit" class="btn" name="search" title="Search"><img src="https://img.icons8.com/ios-glyphs/30/000000/search.png"/></button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -107,10 +107,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
               @foreach ($keluar as $kel)
               <tr>
                 <th scope="row">{{$kel->id}}</th>
-                <td>{{$kel->AlamatPenerima}}</td>
+                <td class="w-25">{{$kel->AlamatPenerima}}</td>
                 <td>{{$kel->Tanggal}}</td>
                 <td>{{$kel->NomorSurat}}</td>
-                <td>{{$kel->Perihal}}</td>
+                <td class="w-25">{{$kel->Perihal}}</td>
                 <td><img src="{{asset('lte/dist/images')}}/{{$kel->Foto}}" class="img-thumbnail" width="150"></td>
                 <td>
                   <a href="{{route ('keluaredit',[$kel->id])}}">
@@ -124,8 +124,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </tbody>
           </table>
 
-          {{-- ! jadi pas request (seach ) data ."links()" dak kepanggil --}}
-          {{-- {{$keluar->links()}} --}}
+          {{$keluar->links()}} 
           
 
 

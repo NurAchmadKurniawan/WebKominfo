@@ -26,11 +26,10 @@ class DataUserController extends Controller
     {
         //
         $user=new User;
-        // $user->create($request->all());
         $user->name=$request->name;
         $user->email=$request->email;
         $user->password=bcrypt($request->password);
-        $user->password_biasa=$request->password;
+        // $user->password_biasa=$request->password->nullable();
         $user->password_confirmation=bcrypt($request->password_confirmation);
         $user->save();
         return redirect('/datauser');

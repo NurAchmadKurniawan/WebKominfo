@@ -111,19 +111,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                         </div>
                     </div>
-                        {{-- <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control" name="name" required value="{{$user->name}}">
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" name="email" required value="{{$user->email}}">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="password" required value="{{$user->password}}">
-                        </div>             --}}
-                    </div>
                     <div class="clearfix">
                       <button type="submit" class="btn btn-primary float-right ml-2">Simpan</button>
 
