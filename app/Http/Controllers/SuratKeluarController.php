@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\SuratKeluar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use File;
 
 class SuratKeluarController extends Controller
 {
@@ -12,7 +13,7 @@ class SuratKeluarController extends Controller
     public function index()
     {
         // pagination
-        $keluar=SuratKeluar::paginate(2);
+        $keluar=SuratKeluar::paginate(10);
 
         return view('admin/suratkeluar', compact('keluar'));
     }
@@ -56,17 +57,29 @@ class SuratKeluarController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $kel = \App\SuratKeluar::find($id);
-        $kel->update($request->all());
+        $SuratKeluar = \App\SuratKeluar::find($id);
+        $SuratKeluar->AlamatPenerima=$request->AlamatPenerima;
+        $SuratKeluar->NomorSurat=$request->NomorSurat;
+        $SuratKeluar->Perihal=$request->Perihal;
+    
+
+        //upload new file
+        if($request->hasFile('image')){
+            $request->file('image')->move('lte/dist/images/', $request->file('image')->getClientOriginalName());
+            $SuratKeluar->Foto = $request->file('image')->getClientOriginalName();
+            if($request->oldimg != 'nf.png'){
+                File::delete('lte/dist/images/'.$request->oldimg);
+            }
+        }
+        $SuratKeluar->save();
         return redirect('/suratkeluar');
     }
 
     public function destroy($id)
     {
-        //
-        $kel = \App\SuratKeluar::find($id);
-        $kel->delete($kel);
-        return redirect('suratkeluar');
+        if($kel->Foto != 'nf.png'){
+            File::delete('lte/dist/images/'.$kel->Foto);
+        }
     }
     public function carikel(Request $request)
     {

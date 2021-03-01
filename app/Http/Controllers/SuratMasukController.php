@@ -98,19 +98,15 @@ class SuratMasukController extends Controller
     {
         //
         $SuratMasuk = \App\SuratMasuk::find($id);
-        // $SuratMasuk = new SuratMasuk;
         $SuratMasuk->AlamatPengirim=$request->AlamatPengirim;
         $SuratMasuk->NomorSurat=$request->NomorSurat;
         $SuratMasuk->Perihal=$request->Perihal;
         
-        //delete old file masih eror hapus old file buat replace imagesnya ini
-        // SuratMasuk::delete('lte/dist/images/',$request->file('image'));
-
         //upload new file
         if($request->hasFile('image')){
             $request->file('image')->move('lte/dist/images/', $request->file('image')->getClientOriginalName());
             $SuratMasuk->Foto = $request->file('image')->getClientOriginalName();
-            if($request->oldimg != 'default.png'){
+            if($request->oldimg != 'nf.png'){
                 File::delete('lte/dist/images/'.$request->oldimg);
             }
         }
@@ -121,19 +117,10 @@ class SuratMasukController extends Controller
     public function destroy($id)
     {
         //
-        // $item = \App\SuratMasuk::find($id);
-        // $item->delete($item);
-        // return redirect('suratmasuk');
 
         if($item->Foto != 'default.png'){
             File::delete('lte/dist/images/'.$item->Foto);
         }
     }
-    // public function getImages(){
-    //     if(!$this->Foto){
-    //         return asset('lte/dist/images/NF.png');
-    //     }
-    
-    //     return asset('lte/dist/images/'.$this->Foto);
-    // }
+ 
 }

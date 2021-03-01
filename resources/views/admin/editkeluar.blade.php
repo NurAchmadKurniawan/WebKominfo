@@ -60,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="container" style="margin-top: 3em;">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <form action="{{route('keluarupdate',['id'=> $kel->id])}}" method="post">
+                <form action="{{route('keluarupdate',['id'=> $kel->id])}}" method="post" enctype="multipart/form-data">
                 @csrf
                     <div class="post-preview">
                         <div class="form-group">
@@ -78,7 +78,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="form-group">
                             <label>Perihal</label>
                             <textarea class="form-control" rows="5" name="Perihal" required>{{$kel->Perihal}}</textarea>
-                        </div>            
+                        </div>   
+                        <div class="form-group">
+                          <label>Upload Foto</label>
+                          <input type="text" name="oldimg" class="d-none" value="{{$kel->Foto}}">
+                          <img src="{{$kel->getImages()}}" class="w-25">
+                          <input type="file" name="image" id="image" value="{{$kel->Foto}}">
+                      </div>          
                     </div>
                     <div class="clearfix">
                       <button type="submit" class="btn btn-primary float-right ml-2">Simpan</button>

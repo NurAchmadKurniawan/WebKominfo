@@ -18,6 +18,7 @@ class CreateDatauserTable extends Migration
             $table->string('Username');
             $table->string('Email');
             $table->string('Password');
+            $table->string('Password_biasa');
             $table->timestamps();
         });
     }

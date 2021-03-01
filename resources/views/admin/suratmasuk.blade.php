@@ -92,7 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
           </form>
         @yield('content')
-        <table class="table" id="datatables">
+        <table class="table">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">No</th>
